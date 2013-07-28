@@ -1,0 +1,21 @@
+apply plugin: 'android'
+
+dependencies {
+    compile 'com.android.support:support-v13:13.0.+'
+}
+
+android {
+    compileSdkVersion 18
+    buildToolsVersion "18.0.0"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 18
+    }
+
+    productFlavors {
+        sample {
+            packageName "com.example.andyroyd"
+        }
+    }
+}
