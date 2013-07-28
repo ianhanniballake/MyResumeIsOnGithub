@@ -10,11 +10,11 @@ Instructions
 
 This application requires Android Studio 0.2.2+ and Gradle 0.5+. Please ensure you have those installed and configured before beginning.
 
-1. Check out the source code
-2. In Android Studio, select Import Project
-3. Select the root directory you checked out
-4. Select _Import project from external model_ and choose Gradle
-5. Check _Use auto-import_ and ensure that _Use gradle wrapper (recommended)_ is selected
+1. In Android Studio, select _Check out from Version Control_
+2. Enter the URL to the repository (if you are using this one, it is https://github.com/ianhanniballake/MyResumeIsOnGithub.git)
+3. Check _Use auto-import_ and ensure that _Use gradle wrapper (recommended)_ is selected
+
+(Alternatively, if you've already checked out the source code, Select _Import Project_, _Import project from external model_, choose _Gradle_, then follow step 3)
 
 This should generate the appropriate Android Studio files and allow you the build the sample application. To add your own resume details, you must add a new [Product flavor][1], either in addition to or replacing the *sample* product flavor.
 
