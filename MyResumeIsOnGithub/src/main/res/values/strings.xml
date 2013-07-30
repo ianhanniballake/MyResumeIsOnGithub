@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- DrawerActivity -->
+    <string name="drawer_open">Open Navigation Drawer</string>
+    <string name="drawer_close">Close Navigation Drawer</string>
+    <string name="drawer_about_me">About Me</string>
+    <string name="drawer_job_history">Job History</string>
+    <string name="drawer_education">Education</string>
+    <string name="drawer_portfolio">Portfolio</string>
+
+    <!-- MainActivity -->
     <string name="action_settings">Settings</string>
 
 </resources>
