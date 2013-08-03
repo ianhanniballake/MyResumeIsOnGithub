@@ -2,9 +2,10 @@ package com.myresumeisongithub.sync;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.text.TextUtils;
 import android.util.Log;
-
-import com.myresumeisongithub.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,6 +18,7 @@ import java.util.Scanner;
 
 public class SyncService extends IntentService {
     private final static String ASSET_URL_PREFIX = "file:///android_asset/";
+    private final static String META_DATA_KEY_RESUME_URL = "resumeUrl";
 
     public SyncService() {
         super(SyncService.class.getSimpleName());
@@ -24,7 +26,23 @@ public class SyncService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        final String resumeUrl = getString(R.string.resumeUrl);
+        // Read resume URL from AndroidManifest <meta-data> element
+        String resumeUrl = null;
+        try {
+            final ApplicationInfo applicationInfo = getPackageManager().getApplicationInfo(getPackageName(),
+                    PackageManager.GET_META_DATA);
+            if (applicationInfo.metaData != null) {
+                resumeUrl = applicationInfo.metaData.getString(META_DATA_KEY_RESUME_URL);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e(SyncService.class.getSimpleName(), "Could not find ourselves", e);
+            return;
+        }
+        if (TextUtils.isEmpty(resumeUrl)) {
+            throw new IllegalArgumentException("No resumeUrl found - you must add a <meta-data> element to your AndroidManifest.xml with the key " +
+                    META_DATA_KEY_RESUME_URL);
+        }
+        // Retrieve the resume
         String resume;
         try {
             InputStream resumeInputStream;
@@ -39,6 +57,7 @@ public class SyncService extends IntentService {
         } catch (IOException e) {
             throw new IllegalArgumentException("Invalid resume URL " + resumeUrl, e);
         }
+        // Parse the resume
         try {
             final JSONObject resumeObject = new JSONObject(resume);
             // Parse and save the resume

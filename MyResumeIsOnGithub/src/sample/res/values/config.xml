@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="my_name">Andy Royd</string>
-    <string name="resumeUrl">file:///android_asset/resume.json</string>
 </resources>
