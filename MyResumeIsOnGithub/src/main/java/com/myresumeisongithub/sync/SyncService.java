@@ -2,13 +2,15 @@ package com.myresumeisongithub.sync;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.gson.Gson;
+import com.myresumeisongithub.model.Resume;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,6 +21,7 @@ import java.util.Scanner;
 public class SyncService extends IntentService {
     private final static String ASSET_URL_PREFIX = "file:///android_asset/";
     private final static String META_DATA_KEY_RESUME_URL = "resumeUrl";
+    public final static String RESUME_KEY = "RESUME_KEY";
 
     public SyncService() {
         super(SyncService.class.getSimpleName());
@@ -58,11 +61,10 @@ public class SyncService extends IntentService {
             throw new IllegalArgumentException("Invalid resume URL " + resumeUrl, e);
         }
         // Parse the resume
-        try {
-            final JSONObject resumeObject = new JSONObject(resume);
-            // Parse and save the resume
-        } catch (JSONException e) {
-            Log.e(SyncService.class.getSimpleName(), "Invalid resume found at " + resumeUrl, e);
-        }
+        Gson gson = new Gson();
+        Resume resumeObject = gson.fromJson(resume, Resume.class);
+        Log.d(SyncService.class.getSimpleName(), "Got resume: " + gson.toJson(resumeObject));
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        sp.edit().putString(RESUME_KEY, gson.toJson(resumeObject)).commit();
     }
 }

@@ -7,4 +7,6 @@
     <dimen name="drawer_item_height">48dp</dimen>
     <dimen name="drawer_item_horizontal_padding">16dp</dimen>
     <dimen name="divider_height">1px</dimen>
+    <!-- About Me -->
+    <dimen name="profile_image_size">150dp</dimen>
 </resources>

@@ -1,7 +1,13 @@
 apply plugin: 'android'
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     compile 'com.android.support:support-v13:13.0.+'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.squareup.picasso:picasso:1.1.1'
 }
 
 android {
