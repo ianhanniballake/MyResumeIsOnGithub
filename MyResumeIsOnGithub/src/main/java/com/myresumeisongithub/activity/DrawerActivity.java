@@ -166,7 +166,7 @@ public abstract class DrawerActivity extends FragmentActivity implements OnClick
 
     @Override
     public void onDrawerOpened(final View drawerView) {
-        getActionBar().setTitle(R.string.my_name);
+        getActionBar().setTitle(R.string.app_name);
         supportInvalidateOptionsMenu();
         final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sharedPreferences.edit().putBoolean(DrawerActivity.HAS_OPENED_DRAWER, true).apply();

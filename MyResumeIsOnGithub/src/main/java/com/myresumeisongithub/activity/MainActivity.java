@@ -153,7 +153,7 @@ public class MainActivity extends DrawerActivity {
         super.selectMenuItem(menuItemTitle);
         mSelectedFragmentTitle = menuItemTitle;
         if (isDrawerOpen()) {
-            getActionBar().setTitle(getText(R.string.my_name));
+            getActionBar().setTitle(getText(R.string.app_name));
         } else {
             getActionBar().setTitle(mSelectedFragmentTitle);
         }
