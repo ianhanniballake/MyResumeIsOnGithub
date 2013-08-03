@@ -20,6 +20,7 @@ import com.myresumeisongithub.fragments.AboutMeFragment;
 import com.myresumeisongithub.fragments.EducationFragment;
 import com.myresumeisongithub.fragments.JobHistoryFragment;
 import com.myresumeisongithub.fragments.PortfolioFragment;
+import com.myresumeisongithub.sync.SyncService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -120,6 +121,7 @@ public class MainActivity extends DrawerActivity {
             }
         }
         selectMenuItem(mSelectedFragmentTitle);
+        startService(new Intent(this, SyncService.class));
     }
 
     @Override
