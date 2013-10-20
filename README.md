@@ -8,7 +8,8 @@ Instructions
 ============
 
 
-This application requires Android Studio 0.2.2+ and Gradle 0.5+. Please ensure you have those installed and configured before beginning.
+This application requires Android Studio 0.3+ and Gradle 0.6+. Please ensure you have those installed and
+configured before beginning.
 
 1. In Android Studio, select _Check out from Version Control_
 2. Enter the URL to the repository (if you are using this one, it is https://github.com/ianhanniballake/MyResumeIsOnGithub.git)
