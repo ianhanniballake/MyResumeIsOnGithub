@@ -16,6 +16,13 @@ public class Resume {
     public Resume() {
     }
 
+    public Resume(String firstName, String middleName, String lastName, String profileImage) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.profileImage = profileImage;
+    }
+
     @Override
     public String toString() {
         StringBuffer fullName = new StringBuffer(firstName);
