@@ -11,6 +11,7 @@ import com.google.tagmanager.Container;
 import com.google.tagmanager.ContainerOpener;
 import com.google.tagmanager.TagManager;
 import com.myresumeisongithub.R;
+import com.myresumeisongithub.model.Address;
 import com.myresumeisongithub.model.Resume;
 
 public class SyncService extends IntentService {
@@ -26,21 +27,24 @@ public class SyncService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        Gson gson = new Gson();
         TagManager tagManager = TagManager.getInstance(this);
         Container container = ContainerOpener.openContainer(tagManager, getString(R.string.container_id),
                 ContainerOpener.OpenType.PREFER_NON_DEFAULT, ContainerOpener.DEFAULT_TIMEOUT_IN_MILLIS).get();
-        final Resume resumeObject = parseResume(container);
-        Gson gson = new Gson();
+        final Resume resumeObject = parseResume(container, gson);
         Log.d(SyncService.class.getSimpleName(), "Got resume: " + gson.toJson(resumeObject));
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         sp.edit().putString(RESUME_KEY, gson.toJson(resumeObject)).commit();
     }
 
-    private static Resume parseResume(Container container) {
+    private static Resume parseResume(Container container, Gson gson) {
         final String firstName = container.getString(FIRST_NAME);
         final String middleName = container.getString(MIDDLE_NAME);
         final String lastName = container.getString(LAST_NAME);
         final String profileImage = container.getString(PROFILE_IMAGE);
-        return new Resume(firstName, middleName, lastName, profileImage);
+        final Address address = gson.fromJson(container.getString("address"), Address.class);
+        final String phone = container.getString("phone");
+        final String email = container.getString("email");
+        return new Resume(firstName, middleName, lastName, profileImage, address, phone, email);
     }
 }

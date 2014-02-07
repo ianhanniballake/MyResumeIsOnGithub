@@ -9,18 +9,44 @@
                 android:paddingRight="@dimen/activity_horizontal_margin">
 
     <ImageView
-            android:id="@+id/profileImage"
-            android:layout_height="@dimen/profile_image_size"
-            android:layout_width="@dimen/profile_image_size"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:visibility="gone"/>
+        android:id="@+id/profileImage"
+        android:layout_height="@dimen/profile_image_size"
+        android:layout_width="@dimen/profile_image_size"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:visibility="gone"/>
 
     <TextView
-            android:id="@+id/fullName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@id/profileImage"
-            style="@android:style/TextAppearance.Holo.Large"/>
+        android:id="@+id/fullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/profileImage"
+        style="@android:style/TextAppearance.Holo.Large"/>
+
+    <TextView
+        android:id="@+id/address"
+        style="@android:style/TextAppearance.Holo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fullName"
+        android:layout_toRightOf="@id/profileImage"/>
+
+    <TextView
+        android:id="@+id/phone"
+        style="@android:style/TextAppearance.Holo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/address"
+        android:layout_toRightOf="@id/profileImage"
+        android:autoLink="phone"/>
+
+    <TextView
+        android:id="@+id/email"
+        style="@android:style/TextAppearance.Holo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phone"
+        android:layout_toRightOf="@id/profileImage"
+        android:autoLink="email"/>
 </RelativeLayout>

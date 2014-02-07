@@ -21,6 +21,9 @@ public class AboutMeFragment extends Fragment implements SharedPreferences.OnSha
     private Resume mResume = null;
     private TextView mFullName;
     private ImageView mProfileImage;
+    private TextView mAddress;
+    private TextView mPhone;
+    private TextView mEmail;
 
     private void updateResume(SharedPreferences sharedPreferences) {
         String resume = sharedPreferences.getString(SyncService.RESUME_KEY, null);
@@ -36,6 +39,9 @@ public class AboutMeFragment extends Fragment implements SharedPreferences.OnSha
             Picasso.with(getActivity()).load(mResume.getProfileImage()).into(mProfileImage);
         }
         mFullName.setText(mResume.toString());
+        mAddress.setText(mResume.getFullAddress());
+        mPhone.setText(mResume.getPhone());
+        mEmail.setText(mResume.getEmail());
     }
 
     @Override
@@ -60,6 +66,9 @@ public class AboutMeFragment extends Fragment implements SharedPreferences.OnSha
         View view = inflater.inflate(R.layout.fragment_about_me, container, false);
         mProfileImage = (ImageView) view.findViewById(R.id.profileImage);
         mFullName = (TextView) view.findViewById(R.id.fullName);
+        mAddress = (TextView) view.findViewById(R.id.address);
+        mPhone = (TextView) view.findViewById(R.id.phone);
+        mEmail = (TextView) view.findViewById(R.id.email);
         return view;
     }
 

@@ -1,5 +1,8 @@
 {
     firstName: "Andy",
     lastName: "Royd",
-    profileImage: "https://lh3.googleusercontent.com/-EurX8_av75g/T4WlMALCryI/AAAAAAAAWJ0/qcDuAm0CGt8/w1012-h1009-no/AndroidIcon3D.png"
+    profileImage: "https://lh3.googleusercontent.com/-EurX8_av75g/T4WlMALCryI/AAAAAAAAWJ0/qcDuAm0CGt8/w1012-h1009-no/AndroidIcon3D.png",
+    address: '{street:"Google Bldg 45", city:"Mountain View", state:"CA", zip:"94043"}',
+    phone: "650-623-4000",
+    email: "android@google.com"
 }
