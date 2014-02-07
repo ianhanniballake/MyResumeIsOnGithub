@@ -25,7 +25,7 @@ public class Resume {
 
     @Override
     public String toString() {
-        StringBuffer fullName = new StringBuffer(firstName);
+        StringBuilder fullName = new StringBuilder(firstName);
         if (!TextUtils.isEmpty(middleName)) {
             if (fullName.length() > 0)
                 fullName.append(' ');

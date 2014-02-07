@@ -67,8 +67,7 @@ public abstract class DrawerActivity extends FragmentActivity implements OnClick
     protected CharSequence getContentTitle() {
         try {
             final PackageManager packageManager = getPackageManager();
-            final CharSequence label = packageManager.getActivityInfo(getComponentName(), 0).loadLabel(packageManager);
-            return label;
+            return packageManager.getActivityInfo(getComponentName(), 0).loadLabel(packageManager);
         } catch (final NameNotFoundException e) {
             Log.w(getClass().getSimpleName(), "Error getting Activity label", e);
             return getText(R.string.drawer_about_me);
