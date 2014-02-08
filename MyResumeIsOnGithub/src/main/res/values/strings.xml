@@ -12,4 +12,8 @@
     <!-- MainActivity -->
     <string name="action_settings">Settings</string>
 
+    <!-- JobHistoryFragment -->
+    <string name="date_range">%1$s - %2$s</string>
+    <string name="date_range_to_present">%s - Present</string>
+
 </resources>

@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.myresumeisongithub.R;
 import com.myresumeisongithub.model.Resume;
 import com.myresumeisongithub.sync.SyncService;
@@ -30,7 +30,7 @@ public class AboutMeFragment extends Fragment implements SharedPreferences.OnSha
         if (TextUtils.isEmpty(resume)) {
             return;
         }
-        mResume = new Gson().fromJson(resume, Resume.class);
+        mResume = new GsonBuilder().setDateFormat("yyyy-MM-dd").create().fromJson(resume, Resume.class);
         final String profileImage = mResume.getProfileImage();
         if (TextUtils.isEmpty(profileImage))
             mProfileImage.setVisibility(View.GONE);
