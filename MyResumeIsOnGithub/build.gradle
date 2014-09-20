@@ -18,7 +18,7 @@ android {
 
     productFlavors {
         sample {
-            packageName "com.example.andyroyd"
+            applicationId "com.example.andyroyd"
         }
     }
 }
